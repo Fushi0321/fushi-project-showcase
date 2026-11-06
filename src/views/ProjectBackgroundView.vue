@@ -75,12 +75,20 @@ const developmentDirections = [
 
     <main class="container">
       <nav class="section-navigation">
-        <a v-for="(item, index) in sections" :key="item.id" :href="`#${item.id}`" class="section-nav-card">
+        <RouterLink
+          v-for="(item, index) in sections"
+          :key="item.id"
+          :to="{ hash: `#${item.id}` }"
+          class="section-nav-card"
+        >
           <span>{{ String(index + 1).padStart(2, '0') }}</span>
           <strong>{{ language === 'en' ? item.enTitle : item.title }}</strong>
-          <small>{{ ['PROJECT BACKGROUND', 'LOCATION', 'PLANNING INDICATORS', 'DEVELOPMENT STRATEGY'][index] }} ↗</small>
-        </a>
+          <small>
+            {{ ['PROJECT BACKGROUND', 'LOCATION', 'PLANNING INDICATORS', 'DEVELOPMENT STRATEGY'][index] }} ↗
+          </small>
+        </RouterLink>
       </nav>
+
 
       <section id="background" class="content-section">
         <div class="section-title">

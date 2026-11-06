@@ -286,21 +286,22 @@ const implementationItems = [
       </div>
     </section>
 
-    <main class="container">
+    <main class="container">      
       <nav class="section-navigation">
-        <a
+        <RouterLink
           v-for="(item, index) in sections"
           :key="item.id"
-          :href="`#${item.id}`"
+          :to="{ hash: `#${item.id}` }"
           class="section-nav-card"
         >
           <span>{{ String(index + 1).padStart(2, '0') }}</span>
           <strong>{{ language === 'en' ? item.enTitle : item.title }}</strong>
           <small>
-          {{ language === 'en' ? 'Explore Section ↗' : '查看专题内容 ↗' }}
-        </small>
-        </a>
+            {{ language === 'en' ? 'Explore Section ↗' : '查看专题内容 ↗' }}
+          </small>
+        </RouterLink>
       </nav>
+
 
       <!-- 第一部分：产业融合 -->
       <section id="position" class="content-section">

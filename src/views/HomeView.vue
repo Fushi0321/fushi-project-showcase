@@ -115,8 +115,8 @@ const industries = [
 </script>
 
 <template>
-  <div class="showcase-home">
-    <header class="site-header">      
+  <div class="showcase-home">    
+    <header class="site-header">
       <div class="site-brand">
         <span class="brand-mark">FS</span>
         <span>
@@ -125,7 +125,34 @@ const industries = [
             : '文体旅商住融合服务产业' }}
         </span>
       </div>
-      
+
+      <!-- 六大专题顶部导航 -->
+      <nav class="header-nav">
+        <RouterLink to="/project-background">
+          {{ language === 'en' ? '01 Background' : '01 项目背景' }}
+        </RouterLink>
+
+        <RouterLink to="/project-vision">
+          {{ language === 'en' ? '02 Positioning' : '02 总体定位' }}
+        </RouterLink>
+
+        <RouterLink to="/project-planning">
+          {{ language === 'en' ? '03 Planning' : '03 空间规划' }}
+        </RouterLink>
+
+        <RouterLink to="/project-architecture">
+          {{ language === 'en' ? '04 Architecture' : '04 建筑创新' }}
+        </RouterLink>
+
+        <RouterLink to="/project-operations">
+          {{ language === 'en' ? '05 Operations' : '05 产业运营' }}
+        </RouterLink>
+
+        <RouterLink to="/project-implementation">
+          {{ language === 'en' ? '06 Implementation' : '06 合作实施' }}
+        </RouterLink>
+      </nav>
+
       <div class="header-right">
         <span class="header-label">
           {{ language === 'en'
@@ -134,16 +161,20 @@ const industries = [
         </span>
         <LanguageSwitcher />
       </div>
-
     </header>
+
 
     <section class="hero">
       <div class="hero-content">
         <div class="hero-eyebrow">
-          EZHOU · AIRPORT ECONOMIC ZONE
+          EZHOU · HUAHU AIRPORT · XM-10-20
         </div>
 
-        <p class="location">{{ t('heroLocation') }}</p>
+        <p class="location">
+          {{ language === 'en'
+            ? 'XM-10-20 Parcel · Ezhou Huahu Airport Economic Zone'
+            : '湖北· 鄂州市花湖机场临空区 XM-10-20 地块' }}
+        </p>
      
         <h1 :class="{ 'hero-title-en': language === 'en' }">
           {{ t('projectTitle') }}
@@ -154,10 +185,13 @@ const industries = [
           {{ t('heroDescription') }}
         </p>
         
-        <a href="#modules" class="explore-button">
+        <RouterLink
+          :to="{ path: '/', hash: '#modules' }"
+          class="explore-button"
+        >
           {{ t('explore') }}
           <span>↓</span>
-        </a>
+        </RouterLink>
 
       </div>
         
@@ -372,8 +406,8 @@ const industries = [
     <footer class="site-footer">
       <p>
         {{ language === 'en'
-          ? 'Ezhou Huahu Airport Economic Zone · Integrated Culture, Sports, Tourism, Commerce & Living Project'
-          : '鄂州市花湖机场临空区文体旅商住融合服务产业项目' }}
+          ? 'XM-10-20 Parcel · Ezhou Huahu Airport Economic Zone · Integrated Culture, Sports, Tourism, Commerce & Living Project'
+          : '鄂州市花湖机场临空区 XM-10-20 地块文体旅商住融合服务产业项目' }}
       </p>
 
       <span>
@@ -1013,4 +1047,87 @@ const industries = [
     font-size: 26px;
   }
 }
+
+
+/* 首页六大专题顶部导航 */
+.site-header {
+  height: auto;
+  min-height: 64px;
+  padding: 10px 4%;
+  gap: 20px;
+}
+
+.site-brand {
+  flex-shrink: 0;
+  font-size: 15px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  gap: 8px;
+}
+
+.header-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 9px;
+  border-radius: 6px;
+  color: #123d5d;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.header-nav a:hover {
+  background: #123d5d;
+  color: #ffffff;
+}
+
+.header-right {
+  flex-shrink: 0;
+}
+
+/* 屏幕较窄时导航自动换到第二行 */
+@media (max-width: 1500px) {
+  .site-header {
+    flex-wrap: wrap;
+  }
+
+  .header-nav {
+    order: 3;
+    flex: 0 0 100%;
+    justify-content: center;
+    overflow-x: auto;
+  }
+}
+
+/* 手机端适配 */
+@media (max-width: 700px) {
+  .site-header {
+    padding: 10px 5%;
+    gap: 10px;
+  }
+
+  .site-brand {
+    font-size: 13px;
+  }
+
+  .header-nav {
+    justify-content: flex-start;
+    gap: 4px;
+  }
+
+  .header-nav a {
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+}
+
 </style>

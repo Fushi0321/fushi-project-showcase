@@ -123,17 +123,18 @@ const cityValues = computed(() => [
     <main class="container">
       <!-- 专题内部导航 -->
       <nav class="section-navigation" :aria-label="bi('专题内容导航', 'Section Navigation')">
-        <a
+        <RouterLink
           v-for="item in sections"
           :key="item.id"
-          :href="`#${item.id}`"
+          :to="{ hash: `#${item.id}` }"
           class="nav-card"
         >
           <span>{{ item.number }}</span>
           <strong>{{ item.title }}</strong>
           <small>{{ bi('查看内容 ↗', 'Explore Section ↗') }}</small>
-        </a>
+        </RouterLink>
       </nav>
+
 
       <!-- 一、总体定位 -->
       <section id="position" class="content-section">

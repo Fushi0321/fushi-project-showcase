@@ -261,21 +261,22 @@ const smartItems = [
       </div>
     </section>
 
-    <main class="container">
+    <main class="container">      
       <nav class="section-navigation">
-        <a
+        <RouterLink
           v-for="(item, index) in sections"
           :key="item.id"
-          :href="`#${item.id}`"
+          :to="{ hash: `#${item.id}` }"
           class="section-nav-card"
         >
           <span>{{ String(index + 1).padStart(2, '0') }}</span>
           <strong>{{ tr(item.title) }}</strong>
           <small>
-          {{ tr('查看专题内容 ↗') }}
-        </small>
-        </a>
+            {{ tr('查看专题内容 ↗') }}
+          </small>
+        </RouterLink>
       </nav>
+
 
       <!-- 01 高耐久体系 -->
       <section id="durability" class="content-section">
